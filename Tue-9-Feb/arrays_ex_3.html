@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+
+<script>
+
+    /*
+     Every second will create a random name and last name.
+     The system prepends a number with a . (dot)
+     1. A Z
+     2. C Z
+     3. B Y
+     4. A X
+     */
+
+    // define array with first names
+    var names = ["A", "B", "C"];
+
+    // define array with last names
+    var lastName = ["X", "Y", "Z"];
+
+    // define a counter initialized with 1
+    var i = 1;
+
+    // place logic code inside setInterval function to have it repeat after 1 second (1000MS)
+    setInterval(function () {
+
+        // generate random number dependent on how many first names we have (0, 1 or 2 for 3 names)
+        var randomNumberForName = Math.floor(Math.random() * names.length);
+
+        // generate random number dependent on how many last names we have (0, 1 or 2 for 3 last names)
+        var randomNumberForLastName = Math.floor(Math.random() * lastName.length);
+
+        // compose the display message with:
+        // - current value of counter (i)
+        // - first name found at a random position in the array of first names
+        // - last name found at a random position in the array of last names
+        var message = i + ". " + names[randomNumberForName] + " " + lastName[randomNumberForLastName];
+
+        // display message
+        console.log(message);
+
+        // increment the i counter
+        i++;
+
+    }, 1000);
+
+
+</script>
+
+</body>
+</html>
