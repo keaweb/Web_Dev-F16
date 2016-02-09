@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+
+<script>
+
+    // define an array with letters
+    var letters = ["A", "B", "C", "D", "E", "F"];
+
+    // iterate through array of letters but skip the next one
+    // * should print: A, C and E
+    // * we increment the i counter by 2
+    for (i = 0; i < letters.length; i = i + 2) {
+
+        // compose message like: "Letter: {name}."
+        var message = "Letter: " + letters[i] + ".";
+
+        // print the message
+        console.log(message);
+    }
+
+</script>
+
+</body>
+</html>
