@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+
+<script>
+
+    /* Create a system that show any of
+     the letters from the array randomly
+     every second */
+
+    // declare an array with letters
+    var letters = ["A", "B", "C"];
+
+    // place logic inside setInterval funtion to repeat it every second (1000MS)
+    setInterval(function () {
+
+        // generate a random number between 0,1 and 2 (at max 3, but never 3)
+        // instead of 3 we can also use letters.length
+        var randomNumber = Math.floor(Math.random() * 3);
+
+        // display the letter we find at a random position in the array
+        // will show:
+        // - A if random number is 0
+        // - B if random number is 1
+        // - C if random number is 2
+        console.log(letters[randomNumber]);
+
+    }, 1000);
+
+</script>
+
+</body>
+</html>
