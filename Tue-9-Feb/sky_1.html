@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stars</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body id="testMe">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    setInterval(function () {
+        var screenWidth = $(window).width();
+        var screenHeight = $(window).height();
+
+        var randomX = Math.floor(Math.random() * screenWidth);
+        var randomY = Math.floor(Math.random() * screenHeight);
+        console.log(randomX);
+        var star = '<div class="star" style="top: ' + randomY + 'px; left: ' + randomX + 'px;"></div>';
+        $("body").append(star);
+
+
+    }, 100);
+
+
+</script>
+
+
+</body>
+</html>
