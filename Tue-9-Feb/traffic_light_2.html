@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Light Solved</title>
+
+    <style>
+
+        .trafficLight {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            border: 1px solid black;
+            border-radius: 50%;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="trafficLight" id="red"></div>
+<div class="trafficLight" id="yellow"></div>
+<div class="trafficLight" id="green"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+
+    var counter = 0;
+    $("#red").css({"background-color": "red"});
+
+    setInterval(function () {
+
+        // console.log(counter);
+        // if(counter == 0)
+        // {
+        // 	$("#red").css({"background-color":"red"});
+        // 	$("#yellow").css({"background-color":"black"});
+        // }
+        // else if(counter == 6){
+        // 	$("#red").css({"background-color":"red"});
+        // 	$("#yellow").css({"background-color":"yellow"});
+        // }
+        // else if(counter == 8){
+        // 	$("#red").css({"background-color":"black"});
+        // 	$("#yellow").css({"background-color":"black"});
+        // 	$("#green").css({"background-color":"green"});
+        // }
+        // else if(counter == 11){
+        // 	$("#yellow").css({"background-color":"yellow"});
+        // 	$("#green").css({"background-color":"black"});
+        // }
+        // counter++;
+
+        // if(counter >= 12)
+        // {
+        // 	counter = 0;
+        // }
+
+
+        // we switch logic according to the value of the counter
+        switch (counter) {
+
+            // when counter is 1
+            case 1:
+                $("#red").css({"background-color": "red"});
+                $("#yellow").css({"background-color": "black"});
+                break;
+
+            // when counter is 6
+            case 6:
+                $("#red").css({"background-color": "red"});
+                $("#yellow").css({"background-color": "yellow"});
+                break;
+
+            // when counter is 8
+            case 8:
+                $("#red").css({"background-color": "black"});
+                $("#yellow").css({"background-color": "black"});
+                $("#green").css({"background-color": "green"});
+                break;
+
+            // when counter is 11
+            case 11:
+                $("#yellow").css({"background-color": "yellow"});
+                $("#green").css({"background-color": "black"});
+                break;
+
+            // when counter is 12 - reset counter to 0 (initial value)
+            case 12:
+                counter = 0;
+                break;
+        }
+        counter++;
+        console.log(counter);
+    }, 200);
+
+
+</script>
+
+</body>
+</html>
