@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+
+<script>
+
+    // define an array with names
+    var names = ["Jessy", "Dave", "Lara", "Mike"];
+
+    // iterate through array of names
+    // and print all names except Dave
+    for (i = 0; i < names.length; i++) {
+
+        // if position of name is NOT 1 (second name - Dave)
+        if (i != 1) {
+
+            // compose message like: "My name is {name}."
+            var message = "My name is " + names[i] + ".";
+
+            // print the message
+            console.log(message);
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
