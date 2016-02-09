@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+
+<script>
+
+    // define an array with drinks
+    var drinks = ["Coke", "Fanta", "Pepsi"];
+
+    // traverse collection of drinks
+    // * first element is at position 0
+    // * last element is at position (length of drinks array) - 1
+    // * drinks.length will be 3 because we have 3 drinks in the array
+    // * we can loop as long as i < 3 (i < drinks.length)
+    for (i = 0; i < drinks.length; i++) {
+
+        // compose message like: "This is a {name_of_drink}."
+        var message = "This is a " + drinks[i] + ".";
+
+        // print the message
+        console.log(message);
+    }
+
+</script>
+
+</body>
+</html>
