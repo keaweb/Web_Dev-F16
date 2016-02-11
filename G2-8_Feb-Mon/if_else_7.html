@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        If-Else Basics 7
+    </title>
+
+</head>
+<body>
+
+<h1>if-else</h1>
+
+<script>
+
+    /*
+     - You have 5 variables:
+       1. "A"
+       2. "B"
+       3. "C"
+       4. "D"
+       5. "E"
+     - Conditions:
+       * 1 and 2 must match
+       * 3 and 4 either of the two must match
+       * 5 must match
+     */
+
+    var one = "A";
+    var two = "B";
+    var three = "C";
+    var four = "D";
+    var five = "E";
+
+    if ((one == "A" && two == "B") && (three == "C" || four == "D") && (five == "E")) {
+        console.log("METTE YES");
+        //console.log("true");
+    }
+    else {
+        console.log("METTE NO");
+        //console.log("false");
+    }
+
+</script>
+
+
+</body>
+
+</html>
