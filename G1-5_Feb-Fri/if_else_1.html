@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check product</title>
+</head>
+<body>
+
+<h1>Check product</h1>
+<input id="txtBrandName" type="text">
+<button onclick="checkBrandName();">Check</button>
+
+<script>
+
+    function checkBrandName() {
+
+        var brandName = document.getElementById("txtBrandName").value;
+
+        if (brandName == "Nike") {
+            console.log("GOOD");
+        }
+        else {
+            console.log("NO");
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
