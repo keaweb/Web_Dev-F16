@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random font awesome</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        #statsPanel{
+            float: right;
+            border: 1px solid black;
+            width: 10em;
+            height: 20em;
+        }
+    </style>
+</head>
+<body>
+<p>Generate icons across the screen</p>
+<p>Keeps tracks of them</p>
+<p>Delete by type</p>
+<div>
+
+    <input type="text" id="txtIcon" placeholder="icon name">
+    <input type="text" id="txtCounter" placeholder="number">
+
+    <button id="btnStart">START</button>
+
+</div>
+
+<div id="statsPanel">
+
+    <div>Total: <span id="statsTotal">0</span></div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    "use strict";
+
+    $("#btnStart").click(function(){
+       drawIcons();
+    });
+
+    function generateIcons(counter, height, width, iconI) {
+        for (var i = 0; i < counter; i++) {
+            var randomHeight = Math.floor(Math.random() * (height + 1));
+            console.log("randomHeight", randomHeight);
+
+            var randomWidth = Math.floor(Math.random() * (width + 1));
+            var iconContainer = '<div style="position: absolute; top:' + randomHeight + 'px; left: ' + randomWidth + 'px;">' + iconI + '</div>';
+            $("body").append(iconContainer);
+
+        }
+    }
+
+    function deleteIconsByName(iconName) {
+        console.log("delete", iconName);
+        var arrayOfIcons = document.getElementsByClassName("fa-key");
+        // get counter
+        var totalOfIcons = parseInt($("#"+iconName+"Total").text());
+        console.log("there were", totalOfIcons, "of", iconName);
+        // deduct counter from total
+        updateTotal(-totalOfIcons);
+        // delete is
+        $(".fa-"+iconName).remove();
+        // delete total counter of icon type
+        $("#"+iconName+"TotalContainer").remove();
+
+    }
+
+    function updateTotal(counter) {
+        var totalNow = parseInt($("#statsTotal").text());
+        console.log("totalNow", totalNow);
+        console.log("adding", counter);
+        totalNow += counter;
+        $("#statsTotal").text(totalNow);
+    }
+
+    function updateIconTotals(thisIconTotalText, iconName, counter) {
+        var thisIconTotals = parseInt(thisIconTotalText);
+        console.log(iconName, "exists");
+        thisIconTotals += counter;
+        $("#" + iconName + "Total").text(thisIconTotals);
+    }
+    function createIconTotalsDiv(iconName, iconI, counter) {
+        console.log(iconName, "does NOT exist");
+        var divContents = '<div id="' + iconName + 'TotalContainer">' + iconI + ': <span id="' + iconName + 'Total">' + counter + '</span> <span id="delete' + iconName + '"><i class="fa fa-trash-o" style="float: right;"></i></span></div>';
+//        console.log(divContents);
+        $("#statsPanel").append(divContents);
+        $("#delete" + iconName).click(function () {
+            deleteIconsByName(iconName);
+        })
+    }
+    function drawIcons() {
+        var width = $(window).width();
+        console.log(width);
+        var height = $(window).height();
+        console.log(height);
+
+        var iconName = $("#txtIcon").val();
+        var counter = parseInt($("#txtCounter").val());
+        console.log("counter", counter);
+
+        var iconI = '<i class="fa fa-' +iconName+ '"></i>';
+
+        generateIcons(counter, height, width, iconI);
+
+        // update total icons
+        updateTotal(counter);
+
+        // check icon totals
+        var thisIconTotalText = $("#"+iconName+"Total").text();
+
+        // if exists, update
+        if (thisIconTotalText != "") {
+            updateIconTotals(thisIconTotalText, iconName, counter);
+        }
+        // else create it
+        // and register on click
+        else {
+            createIconTotalsDiv(iconName, iconI, counter);
+        }
+
+        clearInputs();
+    }
+
+    function clearInputs(){
+        $("#txtIcon").val("");
+        $("#txtCounter").val("");
+    }
+
+</script>
+</body>
+</html>

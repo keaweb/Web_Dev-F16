@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions - return value</title>
+</head>
+<body>
+<script>
+
+    /*funct that returns your last name
+    * show your last name in the console
+    * by calling the function and using its return value*/
+
+    function getName() {
+        return "Cristian";
+    }
+
+     console.log(getName());
+
+    /* show both first
+    and last name
+    */
+
+    function getLastName() {
+      return "Mitroi";
+    }
+
+    var messageOutput = getName() + " " + getLastName();
+    console.log(messageOutput);
+
+    // show in the console a random name coming from
+    // the function //
+
+    var names = ["A", "B", "C", "D"];
+    function getRandomName(){
+        // should return a random name from the array
+        var randIndex = Math.floor(Math.random() * names.length);
+        console.log("generated "+randIndex);
+        return names[randIndex];
+    }
+
+    console.log(getRandomName());
+
+    // show 3 in console.. how do you do it?
+
+    function getOne() {
+        return 1;
+    }
+
+    function getTwo() {
+        return 2;
+    }
+
+    console.log(getOne() + getTwo());
+
+    // show 9 using the two funcs.
+
+    var total = 0;
+    for (var i=0; i<3; i++) {
+        total += getOne();
+        total += getTwo();
+    }
+    console.log(total);
+
+
+</script>
+</body>
+</html>
