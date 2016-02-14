@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    // ["A", 1, "B", 2, "C", 3]
+    // The name is A and the age is 1
+    // The name is B and the age is 2
+    // The name is C and the age is 3
+    // The total age combines is 6
+
+    // variable name can also be called info
+    var data = ["A", 1, "B", 2, "C", 3];
+
+    var sum = 0;
+    // traverse array two by two
+    for (var i = 0; i < data.length; i += 2) {
+
+        var name = data[i];
+        var age = data[i + 1];
+
+        // build the message using the name and the age
+        var message = "The name is " + name + " and the age is " + age;
+        console.log(message);
+
+        // increment the sum
+        sum = sum + age;
+    }
+
+    console.log("The total age combines is " + sum);
+
+</script>
+
+</body>
+</html>

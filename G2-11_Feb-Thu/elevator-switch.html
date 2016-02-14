@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        .elevator {
+            width: 200px;
+            height: 100px;
+            background-color: white;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+    </style>
+
+    <title>Elevator</title>
+</head>
+<body>
+
+<div class="elevator" id="floor3"></div>
+<div class="elevator" id="floor2"></div>
+<div class="elevator" id="floor1"></div>
+<div class="elevator" id="floor0"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    var floor = 0;
+    var direction = "up";
+
+    setInterval(function () {
+
+        // make all elevator elements that have class="elevator" have a white background color
+        $(".elevator").css({"background-color": "white"});
+
+        // select the div element with id floor + current value of the floor
+        $("#floor" + floor).css({"background-color": "black"});
+        // dynamically build the id of the div like:
+        // floor0 : when floor variable is 0
+        // floor1 : when floor variable is 1
+        // ...
+
+        switch (floor) {
+            case 0:
+                // when the floor is 0 (lobby) the elevator must go up
+                direction = "up";
+                console.log("going up");
+                break;
+
+            case 3:
+                // otherwise when the elevator gets to the top (3rd floor), the elevator must go down
+                direction = "down";
+                console.log("going down");
+                break;
+        }
+
+        // check id direction is up
+        if (direction == "up") {
+            floor++; // increase the floor by 1
+            console.log("floor " + floor);
+        }
+        // otherwise if direction is down
+        else {
+            floor--; // decrease the floor by 1
+            console.log("floor " + floor);
+        }
+
+
+    }, 1000);
+
+
+</script>
+
+</body>
+</html>

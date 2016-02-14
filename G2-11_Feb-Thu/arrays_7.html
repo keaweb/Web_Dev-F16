@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    // [10, 20, 30, 40, 50]
+    // Show:
+    // The total is 150
+
+    var numbers = [10, 20, 30, 40, 50];
+
+    var sum = 0;
+    for (var i = 0; i < numbers.length; i++) {
+
+        // the sum will increment with the number found at position i
+        sum = sum + numbers[i];
+
+        // When i: 0: sum =   0 + numbers[0]  (sum =  0  + 10 = 10)
+        // When i: 1: sum =  10 + numbers[1]  (sum =  10 + 20 = 30)
+        // When i: 2: sum =  30 + numbers[2]  (sum =  30 + 30 = 60)
+        // When i: 3: sum =  60 + numbers[3]  (sum =  60 + 40 = 100)
+        // When i: 4: sum = 100 + numbers[4]  (sum = 100 + 50 = 150)
+    }
+
+    console.log("The total is " + sum);
+
+</script>
+
+</body>
+</html>

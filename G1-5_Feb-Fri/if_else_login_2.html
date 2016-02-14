@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>If / Else statements </title>
+</head>
+
+<body>
+
+<div>
+    <input type="text" id="emailMobileInput" placeholder="Email or mobile here">
+    <input type="password" id="passwordInput" placeholder="password here">
+    <button onclick="login();">Login</button>
+</div>
+
+<div id="lblMessage">X</div>
+
+<script>
+
+    function login() {
+        var emailMobileInput = document.getElementById("emailMobileInput").value;
+        var passWordInput = document.getElementById("passwordInput").value;
+        var answerText = document.getElementById("lblMessage");
+
+        var password = "123";
+        var email = "a@b.com";
+        var mobile = "1234";
+
+        if ((emailMobileInput === email || emailMobileInput === mobile) && passWordInput === password) {
+            answerText.innerHTML = "Success";
+        }
+        else {
+            answerText.innerHTML = "Error";
+        }
+    }
+
+</script>
+</body>
+</html>

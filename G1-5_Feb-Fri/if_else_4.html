@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>If / Else statements</title>
+</head>
+
+<body>
+<div>
+    <input type="text" id="isNikeInput" placeholder="Enter text">
+    <button onclick="isItNike();">Check</button>
+</div>
+
+<div id="answerText"></div>
+
+<script>
+
+    function isItNike() {
+
+        var nikeInputField = document.getElementById("isNikeInput");
+        var answerText = document.getElementById("answerText");
+
+        if (nikeInputField.value === "nike") {
+            answerText.innerHTML = "Good";
+        }
+        else {
+            answerText.innerHTML = "Bad";
+        }
+    }
+
+</script>
+</body>
+</html>

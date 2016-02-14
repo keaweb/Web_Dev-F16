@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>If / Else statements</title>
+</head>
+
+<body>
+
+<div>
+    <select id="brandSelector">
+        <option value="nike">Nike</option>
+        <option value="puma">Puma</option>
+    </select>
+    <button onclick="getPrice();">Price</button>
+</div>
+
+<div id="lblMessage">X</div>
+
+<script>
+
+    function getPrice() {
+
+        var lblMessage = document.getElementById("lblMessage");
+        var brandSelector = document.getElementById("brandSelector").value;
+
+        console.log(brandSelector);
+
+        if (brandSelector === "nike") {
+            lblMessage.innerHTML = "$10";
+        }
+        else {
+            lblMessage.innerHTML = "$20";
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div id="chats"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    // array with font-awesome icons
+    var icons = ["fa-home", "fa-user", "fa-key", "fa-lock"];
+
+    setInterval(function () {
+
+        // generate a random number (must be < icons.length)
+        var random = Math.round(Math.random() * (icons.length - 1));
+
+        // access the icon located at a random position in the array
+        var icon = icons[random];
+
+        // generate 5 icons per second (same font)
+        for (var i = 0; i < 5; i++) {
+            // jQuery select page element with id chats and append a random font-awesome icon
+            $("#chats").append('<div><span class="fa ' + icon + '"></div>');
+        }
+
+        // if you want to generate 5 random & different icons
+        // move the random and icon variables inside the loop
+        // just above the jQuery append
+
+    }, 1000);
+
+
+</script>
+
+</body>
+</html>
