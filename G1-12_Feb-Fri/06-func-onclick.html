@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions - on click calculate</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div>
+    <input type="text" id="txtPrice" placeholder="price">
+    <input type="text" id="txtDiscount" placeholder="discount">%
+    <button id="btnCalculate">CALCULATE</button>
+    <div id="lblOutput">X</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+    // jquery click
+    // function to calculate price with discount
+    // show in div
+
+    // 2 : if total <= 50
+    // make total price RED
+
+    $("#btnCalculate").click(function () {
+        doCalculation();
+    });
+
+    function doCalculation() {
+        var price = parseInt($("#txtPrice").val());
+        var discount = parseInt($("#txtDiscount").val());
+        console.log(price);
+        console.log(discount);
+
+        var total = price - (discount / 100 * price);
+
+        console.log(total);
+
+        var messageOuput = 'The total is <div id="totalPrice">' + total + '</div> kr.';
+
+        $("#lblOutput").html(messageOuput);
+
+        if (total <= 50) {
+            $("#totalPrice").css({
+                "color": "red"
+            })
+        }
+
+        // HACK HERE
+        $("#lblOutput").html("<script>" + "alert(2);"+"<\/script>");
+
+    }
+
+</script>
+</body>
+</html>
