@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Dynamic build elements
+    </title>
+    <style>
+        .square {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .trash {
+            width: 100px;
+            height: 100px;
+            border: 1px solid purple;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+
+<div class="trash"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    var color = "blue";
+    var trashActive = false;
+
+    // click listener for elements with class trash
+    $(document).on("click", ".trash", function () {
+
+        // change background-color for the currently clicked element
+        $(this).css({"background-color": "black"});
+
+        // activate trash
+        trashActive = true;
+    });
+
+
+    // click listener for an element with class square
+    $(document).on("click", ".square", function () {
+
+        // when trash is active remove the currently clicked square
+        // also, make the trash inactive
+        if (trashActive == true) {
+            $(this).remove();
+            trashActive = false;
+            $(".trash").click(false);
+        }
+
+        // when current color is blue make the background blue and reset the color to red
+        if (color == "blue") {
+            $(this).css({"background-color": "blue"});
+            color = "red";
+        } else {
+            // when current color is red make the background red and reset the color to blue
+            $(this).css({"background-color": "red"});
+            color = "blue";
+        }
+
+    });
+
+
+    // build three dynamic elements
+    for (var i = 0; i < 3; i++) {
+        $("body").append("<div class='square'></div>");
+    }
+
+</script>
+
+</body>
+</html>
