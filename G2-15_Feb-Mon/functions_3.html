@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    function functionA() {
+        console.log('John');
+
+        // call functionB() only if we enter functionA()
+        functionB();
+    }
+
+    function functionB() {
+        console.log('Doe');
+    }
+
+    // call functionA() first
+    functionA();
+
+</script>
+
+</body>
+</html>
