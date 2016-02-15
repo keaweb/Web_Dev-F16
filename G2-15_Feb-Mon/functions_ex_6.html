@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+DO NOT EVER DO THIS! Mixing JS with HTML is ugly code.
+<button id="btnTestMe" onclick="testMe()">Click Me</button>
+-->
+
+<button id="button-1">Button 1</button>
+<button id="button-2">Button 2</button>
+<button id="button-3">Button 3</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    // Create 3 buttons:
+    // Button 1 - calls function showOne
+    // Button 2 - calls function showTwo
+    // Button 3 - calls function showThree
+
+    // events
+    $("#button-1").click(function () {
+        showOne();
+    });
+
+    $("#button-2").click(function () {
+        showTwo()
+    });
+    $("#button-3").click(function () {
+        showThree();
+    });
+
+    // functions
+    function showOne() {
+        console.log("One");
+    }
+
+    function showTwo() {
+        console.log("Two");
+    }
+
+    function showThree() {
+        console.log("Three");
+    }
+
+</script>
+
+</body>
+</html>
