@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    // Display the following
+    /*
+     One
+     Two
+     One
+     Two
+     */
+
+    // counter will be shared showOne() and showTwo()
+    var c = 0;
+
+    function showOne() {
+        if (c < 2) {
+            console.log('One');
+            showTwo();
+        }
+    }
+
+    function showTwo() {
+        c++;
+        console.log('Two');
+        showOne();
+    }
+
+    showOne();
+
+
+    //     An alternative: replace showOne with.
+//    function showOne() {
+//        if (c == 2) {
+//            return;
+//        }
+//        console.log('One');
+//        showTwo();
+//    }
+
+
+</script>
+
+</body>
+</html>
