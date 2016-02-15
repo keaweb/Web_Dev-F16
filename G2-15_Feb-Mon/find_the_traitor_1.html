@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Good and Bad
+    </title>
+    <style>
+        .soldier {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            border: 1px solid white;
+        }
+
+        .traidor {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    var numberOfSoldiers = 5; // later, this is the value
+    var numberOfTraidors = 2; // later, this is the value
+    for (var i = 0; i < numberOfSoldiers; i++) {
+        $("body").append("<div class='soldier'></div>");
+    }
+
+    // remember: JQUery is JS, so it has arrays
+    var totalSoldiers = $(".soldier").length;
+
+    // console.log(totalSoldiers);
+
+    for (var i = 0; i < numberOfSoldiers; i++) {
+        var randomSoldier = Math.floor(Math.random() * 5);
+        console.log(randomSoldier);
+        $(".soldier:eq(" + randomSoldier + ")").addClass("traidor").removeClass("soldier");
+        var hereNumberOfTraidors = $(".traidor").length;
+        console.log(hereNumberOfTraidors + "---------------");
+        if (hereNumberOfTraidors == numberOfTraidors) {
+            break;
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
