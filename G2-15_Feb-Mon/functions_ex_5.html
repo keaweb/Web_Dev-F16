@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    var counter = 0;
+
+    function showName() {
+        if (counter < 10) {
+            console.log('Mark');
+            counter++;
+        } else {
+            // when counter gets to 10
+            clearInterval(timer); // kill the tick by using the reference of the timer
+        }
+    }
+
+    // set a reference of setInterval() function to a timer variable
+    var timer = setInterval(function () {
+        showName();
+    }, 1000);
+
+</script>
+
+</body>
+</html>
