@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!-- divClick is a click-able div -->
+
+<div class="divClick">This is a static div hard-coded in the HTML document.</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    // to make sure all event functions will work replace the typical .click() function with:
+    // BEFORE:
+    // $("#divClick").click(function () { SOME LOGIC HERE});
+
+    // AFTER:
+    // Template to remember: $(document).on('action', 'identifier', function(){});
+    $(document).on('click', '.divClick', function () {
+        console.log('Click.');
+    });
+
+    $("body").append('<div class="divClick">This is a dynamic div - appened on body with jQuery.</div>');
+
+    // use prepend if you want the dynamic element appear top first (followed by static elements)
+    // $("body").prepend('<div>This is a dynamic div - appened on body with jQuery.</div>');
+
+</script>
+
+</body>
+</html>
