@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+DO NOT EVER DO THIS! Mixing JS with HTML is ugly code.
+<button id="btnTestMe" onclick="testMe()">Click Me</button>
+-->
+
+<button id="btnTestMe">Click Me</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    // events
+    $("#btnTestMe").click(function () {
+        testMe();
+    });
+
+    // functions
+    function testMe() {
+        console.log("x");
+    }
+
+</script>
+
+</body>
+</html>
