@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<input id="number-min" type="text" placeholder="Min">
+<input id="number-max" type="text" placeholder="Max">
+<button id="generate">Generate</button>
+<p id="data-output"></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    // Create two input fields that take two numbers: a min and a max.
+    // Based on the values of those two numbers generate a
+    // random number within the min-max range - every time the user clicks Generate button.
+    // Output will be displayed in the console.
+
+    // min and max are initially set to 0
+    var min = 0, max = 0;
+    var random = 0;
+
+    function getRandom() {
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    function displayData() {
+        // compose a message variable that gets a random number and concatenates to our output text
+        var message = "Random number: " + random;
+
+        // set the message on the element with id #number-random
+        $("#data-output").text(message);
+    }
+
+    function displayError() {
+        $("#data-output").text("Min & Max - must be numbers.");
+    }
+
+    $("#generate").click(function () {
+        min = Number($("#number-min").val());
+        max = Number($("#number-max").val());
+
+        // make sure min - max are numbers and not text
+        if (isNaN(min) || isNaN(max)) {
+
+            // call displayError() function in case one of the numbers is text
+            displayError();
+
+            // exit jQuery click function - will not continue executing code bellow with getRandom() and displayData()
+            return;
+        }
+
+        // set random with the value returned by getRandom() function
+        random = getRandom();
+        displayData();
+    });
+
+</script>
+
+</body>
+</html>
