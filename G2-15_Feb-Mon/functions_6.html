@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    function getMessage() {
+        return "Hello!";
+        console.log("XXXXX"); // this line will never be called because when we return we exit the function
+    }
+
+    // calling getMessage function - will return some text that will be placed in the console.log
+    console.log(getMessage());
+
+</script>
+
+</body>
+</html>
