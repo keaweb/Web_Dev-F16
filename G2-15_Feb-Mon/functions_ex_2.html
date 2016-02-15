@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    // Create 3 functions:
+    // - call the first one
+    // - first one calls the second one
+    // - second one calls third one
+
+    function startApp() {
+        console.log('App is starting...');
+        installUpdates();
+    }
+
+    function installUpdates() {
+        console.log('Installing updates...');
+        login();
+    }
+
+    function login() {
+        console.log('Connecting user...');
+    }
+
+    startApp();
+
+</script>
+
+</body>
+</html>
