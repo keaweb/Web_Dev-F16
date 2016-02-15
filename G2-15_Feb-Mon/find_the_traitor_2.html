@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .square {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            /*float: right;*/
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+    Soldiers: <input id="soldiers" type="text"/>
+    Traitors: <input id="traitors" type="text"/>
+
+    <button id="generate">Generate</button>
+
+    <div id="game-table"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    var soldiers = 0, traitors = 0;
+
+    // transform a random soldier into a traitor
+    function makeRandomTraitor() {
+        var rand = Math.floor(Math.random() * (soldiers + traitors));
+
+        // if the square is a traitor already make recursive call
+        if ($('#' + rand).hasClass('traitor')) {
+            makeRandomTraitor();
+        }
+
+        // corrupt a soldier into a traitor - change the soldier class into traitor class
+        $('#' + rand).removeClass('soldier').addClass('traitor');
+    }
+
+    function makeTraitors() {
+        for (var i = 0; i < traitors; i++) {
+            makeRandomTraitor();
+        }
+    }
+
+    function makeTable() {
+        for (var i = 0; i < soldiers + traitors; i++) {
+            $("#game-table").append("<div class='square soldier' id='" + i + "'></div>");
+        }
+        makeTraitors();
+    }
+
+    function showError(error_message) {
+        $("#game-table").text(error_message);
+    }
+
+    $(document).on("click", "#generate", function () {
+
+        soldiers = Number($("#soldiers").val());
+        traitors = Number($("#traitors").val());
+
+        if (isNaN(soldiers) || isNaN(traitors)) {
+            showError("Soldiers & Traitors - must both be numbers");
+            return;
+        }
+
+        if (traitors > soldiers) {
+            showError("You cannot have more traitors than soldiers.");
+            return;
+        }
+
+        makeTable();
+
+    });
+
+    // click listener for soldier
+    $(document).on("click", ".soldier", function () {
+        $(this).css({'background-color': 'green'});
+    });
+
+    // click listener for traitor
+    $(document).on("click", ".traitor", function () {
+        $(this).css({'background-color': 'red'});
+    });
+
+
+</script>
+
+</body>
+</html>
