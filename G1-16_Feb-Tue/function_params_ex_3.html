@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div>
+    <input id="min" type="text" placeholder="Min">
+    <input id="max" type="text" placeholder="Max">
+    <button id="submit">Submit</button>
+    <div id="output"></div>
+    <div id="error"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function showError(message) {
+        $("#error").text(message);
+    }
+
+    function clearError() {
+        $("#error").text("");
+    }
+
+    function show(message) {
+
+        // clear all errors if there are any
+        clearError();
+
+        // append some HTML to the output div
+        $("#output").append("<div>" + message + "</div>");
+        // use .text() instead if .append() to replace the text inside the output div
+    }
+
+    $(document).on("click", "#submit", function () {
+
+        var min = Number($("#min").val());
+        var max = Number($("#max").val());
+
+        // make sure min - max are numbers and not text
+        if (isNaN(min) || isNaN(max)) {
+            showError("Min & Max must both be numbers.");
+            return;
+        }
+
+        if (min == 0 || max == 0) {
+            showError("Min / Max cannot be 0.");
+            return;
+        }
+
+        if (min > max) {
+            showError("Min cannot be grater than Max.");
+            return;
+        }
+
+        // call show() with with the full name return value from the call of getRandom()
+        show(getRandom(min, max));
+
+    });
+
+
+</script>
+
+</body>
+</html>
