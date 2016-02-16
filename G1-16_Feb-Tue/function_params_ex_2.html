@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div>
+    <input id="first_name" type="text" placeholder="First Name">
+    <input id="last_name" type="text" placeholder="Last Name">
+    <button id="submit">Submit</button>
+    <div id="output"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    function getFullName(firstName, lastName) {
+        return firstName + " " + lastName;
+    }
+
+    function show(message) {
+        var message = "Hi " + message + ".";
+        $("#output").text(message);
+    }
+
+    $(document).on("click", "#submit", function () {
+
+        // get the input value for the first name
+        var firstName = $("#first_name").val();
+
+        // get the input value for the last name
+        var lastName = $("#last_name").val();
+
+
+        // check if the length of first/last name is not zero
+        if (firstName.length == 0 || lastName.length == 0) {
+            show("First/Last name is missing.");
+            return;
+        }
+
+        // call show() with with the full name return value from the call of getFullName()
+        show(getFullName(firstName, lastName));
+
+    });
+
+
+</script>
+
+</body>
+</html>
