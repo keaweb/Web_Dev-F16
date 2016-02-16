@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+
+        body {
+            background-color: #dedede;
+        }
+
+        .drone {
+            position: absolute;
+        }
+
+        .fast-spin {
+            -webkit-animation: fa-spin 0.7s infinite linear;
+            animation: fa-spin 0.7s infinite linear;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+
+    function random(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    function getRandomPosition() {
+        return {
+            x: random($(document).width() - 100),
+            y: random($(document).height() - 100)
+        };
+    }
+
+    function getRandomColor() {
+        return 'rgb(' + random(0xFF) + ',' + random(0xFF) + ',' + random(0xFF) + ')'
+    }
+
+    for (var i = 0; i < 5; i++) {
+        var id = "drone-" + i;
+        var position = getRandomPosition();
+        var color = getRandomColor();
+
+        var drone = '<i id="' + id + '" class="drone fa fa-chrome fa-4x fast-spin"></i>';
+        $("#map").append(drone);
+        $("#" + id).css({
+            "left": position.x,
+            "top": position.y,
+            "color": color
+        });
+    }
+
+
+    var base_position = {
+        x: 20,
+        y: 20
+    };
+
+    function isAtBase(element) {
+        return element.position().top == base_position.x && element.position().left == base_position.y;
+    }
+
+    function moveToBase(element) {
+        element.animate({
+            left: base_position.x,
+            top: base_position.y
+        }, 500, function () {
+            // Animation complete.
+            element.removeClass('fast-spin');
+            // stop spinning when moved to base
+        });
+    }
+
+    function moveToRandomPosition(element) {
+
+        element.css({"color": getRandomColor()});
+
+        element.addClass('fast-spin');
+        // start spinning before move animation
+
+        var position = getRandomPosition();
+        element.animate({
+            left: position.x,
+            top: position.y
+        }, 500, function () {
+            // Animation complete.
+        });
+    }
+
+    $(document).on("click", ".drone", function () {
+
+        var element = $(this);
+
+        if (isAtBase(element)) {
+            moveToRandomPosition(element);
+        } else {
+            moveToBase($(this));
+        }
+
+    });
+
+
+</script>
+
+</body>
+</html>
