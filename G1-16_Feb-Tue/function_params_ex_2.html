@@ -21,7 +21,6 @@
     }
 
     function show(message) {
-        var message = "Hi " + message + ".";
         $("#output").text(message);
     }
 
@@ -41,7 +40,9 @@
         }
 
         // call show() with with the full name return value from the call of getFullName()
-        show(getFullName(firstName, lastName));
+
+        var message = "Hi " + getFullName(firstName, lastName) + ".";
+        show(message);
 
     });
 
