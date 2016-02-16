@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animate</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            overflow: hidden;
+
+        }
+
+        .fa {
+            position: absolute;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+<script>
+    $(document).on("ready", function () {
+        getIcons();
+
+    });
+
+    var iconName = ["fa-user", "fa-key", "fa-globe", "fa-facebook"];
+    var iconSize = ["fa-lg", "fa-2x", "fa-3x", "fa-4x", "fa-5x"];
+
+
+    function getIcons() {
+        for (j = 0; j < 5; j++) {
+            var screenWidth = $(window).width();
+            var screenHeight = $(window).height();
+
+            var randomX = Math.floor(Math.random() * screenWidth);
+            var randomY = Math.floor(Math.random() * screenHeight);
+
+
+            for (i = 0; i < iconName.length; i++) {
+                var randomIcon = Math.floor(Math.random() * iconName.length);
+                var displayRandomIcon = iconName[randomIcon];
+            }
+
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF'.split('');
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            for (i = 0; i < iconSize.length; i++) {
+                var randomSize = Math.floor(Math.random() * iconSize.length);
+                var displayRandomSize = iconSize[randomSize];
+            }
+
+
+            var icon = '<i class="fa ' + displayRandomIcon + ' ' + displayRandomSize + ' fa-spin" style="top: ' + randomY + 'px; left: ' + randomX + 'px; color: ' + getRandomColor() + '" ></i>';
+
+            $("body").append(icon);
+
+
+        }
+
+        $(".fa").click(function () {
+            $(this).animate({
+                top: screenHeight / 2,
+                left: screenHeight / 2,
+                right: screenHeight / 2,
+                bottom: screenHeight / 2
+            }, 1000, function () {
+
+            });
+        });
+
+    }
+
+
+</script>
+
+
+</body>
+</html>
