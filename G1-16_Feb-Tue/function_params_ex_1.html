@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    // Create a function that expect 5 arguments:
+    // 1. first name
+    // 2. last name
+    // 3. age
+    // 4. year
+    // 5. your pet's name
+    // Function will return the next message:
+    // My name is {firstName} {lastName}, I am {age} years old.
+    // We are in {year}, and my pet's name is {petName}.
+
+    function getData(firstName, lastName, age, year, petName) {
+
+        var info = "My name is " + firstName + " " + lastName + ", I am " + age + " years old.";
+        info += " ";
+        info += "We are in " + year + ", and my pet's name is " + petName + ".";
+
+        return info;
+    }
+
+    var year = new Date().getFullYear(); // getting the current year from system
+    var info = getData("Peter", "Griffin", 51, year, "Brian");
+
+    console.log(info);
+
+</script>
+
+</body>
+</html>
