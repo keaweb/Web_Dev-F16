@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tue-16-Feb</title>
+    <style>
+        .drone {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<input id="txtFrom" placeholder="from number" value="0"></input>
+<input id="txtTo" placeholder="to number" value="1"></input>
+<button id="btnShowRandomNumber">Show Random Number</button>
+<div id="lblForDrones">
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+
+    $(document).on("click", "#btnShowRandomNumber", function () {
+        showDrones();
+    });
+
+    function showDrones() {
+        var theFromNumber = Number($("#txtFrom").val());
+        var theToNumber = Number($("#txtTo").val());
+        // console.log(theToNumber);
+        var theRandomNumber = getRandomNumber(theFromNumber, theToNumber);
+        var theDrone = '<div class="drone">XXXX</div>';
+        $("#lblForDrones").html(''); // clear the world
+
+        for (var i = 0; i < theRandomNumber; i++) {
+            $("#lblForDrones").append(theDrone);
+        }
+
+
+        // append, text, html
+    }
+
+    function getRandomNumber(theFromNumber, theToNumber) {
+        var randomNumber = Math.floor(Math.random() * (theToNumber - theFromNumber + 1) + theFromNumber);
+        return randomNumber;
+    }
+
+</script>
+
+
+</body>
+</html>
