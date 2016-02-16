@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        .drone {
+            border-radius: 50%;
+            border: solid 1px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+        }
+    </style>
+
+</head>
+<body>
+
+<div>
+    <input id="min" type="text" placeholder="min">
+    <input id="max" type="text" placeholder="max">
+    <input id="color" type="text" placeholder="color">
+    <button id="submit">Create</button>
+    <div id="output"></div>
+    <div id="error"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function showError(message) {
+        $("#error").text(message);
+    }
+
+    function clearError() {
+        $("#error").text("");
+    }
+
+    function show(number, color) {
+        clearError(); // clear all errors if there are any
+
+        // get a large random number
+        // we need to add this as a class on all current element
+        // like this we can set background-color dynamically
+        var classRandom = 'n-' + getRandom(9999, 999999);
+
+        // generate a random number of drones
+        for (var i = 0; i < number; i++) {
+
+            // please DO NOT do this! your site is prone to HTML/JavaScript injection
+            //var style = 'background-color: ' + color;
+            //var out = '<div class="drone" style="' + style + '"></div>';
+            //$("#output").prepend(out);
+            // user input on color: blue"><h1>HTML</h1>
+
+            // - build a dynamic div element
+            // - append it to output
+            var out = '<div class="drone ' + classRandom + '"></div>';
+            $("#output").prepend(out);
+        }
+
+        // - change background color for the whole set
+        $("." + classRandom).css({'background-color': color});
+
+    }
+
+    $(document).on("click", "#submit", function () {
+
+        var min = Number($("#min").val());
+        var max = Number($("#max").val());
+        var color = $("#color").val();
+
+        // make sure min - max are numbers and not text
+        if (isNaN(min) || isNaN(max)) {
+            showError("Min & Max must both be numbers.");
+            return;
+        }
+
+        if (min == 0 || max == 0) {
+            showError("Min / Max cannot be 0.");
+            return;
+        }
+
+        if (min > max) {
+            showError("Min cannot be grater than Max.");
+            return;
+        }
+
+        // call show() with with the full name return value from the call of getRandom()
+        show(getRandom(min, max), color);
+
+    });
+
+
+</script>
+
+</body>
+</html>
