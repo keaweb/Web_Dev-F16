@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tue-16-Feb</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <style>
+        .drone {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<input id="time" type="text" style="float: right">
+
+<div class="drone"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+
+    function getTime() {
+        return Number($("#time").val());
+    }
+
+    $(".drone").click(function () {
+        $(".drone").animate({
+            top: "+=300",
+            left: "+=500"
+        }, getTime(), function () {
+            // Animation complete.
+        });
+    });
+
+</script>
+
+
+</body>
+</html>
