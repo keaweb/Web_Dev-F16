@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style type="text/css">
+        .drone {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: green;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<i class='drone' data-life="50"></i>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    function getDroneLife() {
+        // will return the current value of the data-life attribute
+        return $(".drone").attr("data-life");
+    }
+
+    function incrementDroneLife() {
+        var currentLife = Number(getDroneLife());
+        var newLife = currentLife + 1;
+
+        // attr() can be called with a second parameter which will update the data-life value
+        $(".drone").attr("data-life", newLife);
+    }
+
+    // initially 50
+    console.log(getDroneLife());
+
+    // increment by 1
+    incrementDroneLife();
+
+    // after increment should be 51
+    console.log(getDroneLife());
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
