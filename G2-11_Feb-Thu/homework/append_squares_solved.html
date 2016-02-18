@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        .input-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+
+        .someBox {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            background-color: darkmagenta;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="background"></div>
+<div class="input-div">
+    <input id="number" type="text"/>
+    <button id="submit">Go</button>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    function rand(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    $('#submit').click(function () {
+
+        var num = parseInt($('#number').val());
+        if (isNaN(num)) {
+            return;
+        }
+
+        for (var i = 0; i < num; i++) {
+            var randomX = rand($(window).height());
+            var randomY = rand($(window).width());
+
+            var elem = '<div style="top: ' + randomX + 'px; left: ' + randomY + 'px" class="someBox"></div>';
+            $('#background').append(elem);
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
