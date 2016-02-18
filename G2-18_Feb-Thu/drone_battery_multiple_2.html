@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        .drone {
+            position: absolute;
+        }
+
+        .super {
+            left: 0;
+        }
+
+        .normal {
+            left: 80px;
+        }
+
+        .cheap {
+            left: 160px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .yellow {
+            color: yellow;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="drone super fa fa-gear fa-5x fa-spin green" data-battery="40"></div>
+<div class="drone normal fa fa-gear fa-5x fa-spin green" data-battery="30"></div>
+<div class="drone cheap fa fa-gear fa-5x fa-spin green" data-battery="12"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    var droneInterval = setInterval(function () {
+        $('.drone').each(function (index, value) {
+            $(this).attr('data-battery', ($(this).attr('data-battery') - 1));
+        });
+        /* CHAINING */
+        if ($('.super').attr('data-battery') <= 0) {
+            $('.super').removeClass('yellow').addClass('red');
+            clearInterval(droneInterval);
+        } else if ($('.super').attr('data-battery') <= 20) {
+            $('.super').removeClass('green').addClass('yellow');
+        }
+
+        if ($('.normal').attr('data-battery') <= 0) {
+            $('.normal').removeClass('yellow').addClass('red');
+        } else if ($('.normal').attr('data-battery') <= 12) {
+            $('.normal').removeClass('green').addClass('yellow');
+        }
+
+        if ($('.cheap').attr('data-battery') <= 0) {
+            $('.cheap').removeClass('yellow').addClass('red');
+        } else if ($('.cheap').attr('data-battery') <= 2) {
+            $('.cheap').removeClass('green').addClass('yellow');
+        }
+    }, 100);
+</script>
+</body>
+</html>
