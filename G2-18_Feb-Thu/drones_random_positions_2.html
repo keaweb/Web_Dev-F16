@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+
+        body {
+            background-color: #dedede;
+        }
+
+        .drone {
+            position: absolute;
+        }
+
+        .fast-spin {
+            -webkit-animation: fa-spin 0.2s infinite linear;
+            animation: fa-spin 0.2s infinite linear;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    function getRandom(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    function getRandomColor() {
+        var R = getRandom(0xFF);
+        var G = getRandom(0xFF);
+        var B = getRandom(0xFF);
+        return 'rgb(' + R + ',' + G + ',' + B + ')';
+    }
+
+    function getRandomPositionX() {
+        var width = $(document).width();
+        return getRandom(width);
+    }
+
+    function getRandomPositionY() {
+        var height = $(document).height();
+        return getRandom(height);
+    }
+
+    function placeDrone() {
+
+        var drone = '<i class="drone fa fa-chrome fa-4x fast-spin"></i>';
+        var positionX = getRandomPositionX();
+        var positionY = getRandomPositionX();
+        var color = getRandomColor();
+
+        $("#map").append(drone);
+        $(".drone:last").css({
+            "left": positionX,
+            "top": positionY,
+            "color": color
+        });
+    }
+
+    var timer = setInterval(function () {
+        var dronesLength = $(".drone").length;
+
+        if (dronesLength == 10) {
+            clearInterval(timer);
+        } else {
+            placeDrone();
+        }
+
+    }, 500);
+
+
+</script>
+
+</body>
+</html>
