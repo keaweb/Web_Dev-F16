@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    // Create a function that takes 5 parameters:
+    // 1. firstName
+    // 2. lastName
+    // 3. year
+    // 4. price
+    // 5. color
+
+    // The function displays a message like:
+    // Hi A B, the year is 2016. Price is 10 and the color is blue.
+
+    function printData(firstName, lastName, year, price, color) {
+        // firstName: "Mick"
+        // lastName: "Jagger"
+        // year: 2020
+        // price: 33
+        // color: "blue"
+
+        var message = "Hi " + firstName + " " + lastName + ", the year is " + year + ".";
+        message += " ";
+        message += "Price is " + price + " and the color is " + color + ".";
+
+        console.log(message);
+    }
+
+    // passing some hardcoded values as function parameters
+    printData("Mick", "Jagger", 2020, 33, "blue");
+
+</script>
+
+</body>
+</html>
