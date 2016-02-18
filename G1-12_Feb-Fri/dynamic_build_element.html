@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<div id="superDiv">
+    <div class="btnTest">Click me</div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    // already built elements
+    // $(".btnTest").click(function(){
+    // 	console.log("X");
+    // });
+
+    // applied to all elements, even dynamic ones
+    // this is very good to know
+    $(document).on("click", ".btnTest", function () {
+        console.log("X");
+    });
+
+    $("#superDiv").append('<div class="btnTest">Click me</div>');
+
+
+</script>
+
+
+</body>
+</html>
