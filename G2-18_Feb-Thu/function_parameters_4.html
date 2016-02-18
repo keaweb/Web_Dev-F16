@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    // Create a program that has 3 functions:
+
+    // * firstFunction():
+    //   - expects/takes a number as parameter
+    //   - adds 10 to that number and returns the final result
+
+    // * secondFunction():
+    //   - expects/takes a number as parameter
+    //   - adds 5 to that number and returns the final result
+
+    // * thirdFunction():
+    //   - makes a sum with the return values we get from calling firstFunction() and secondFunction()
+    //   - displays the final sum resut in the console
+
+    function getXPlusTen(x) {
+        return x + 10;
+    }
+
+    function getXPlusFive(x) {
+        return x + 5;
+    }
+
+    function printTotal() {
+        // store the result of the first call
+        var first = getXPlusTen(4);
+
+        // store the result of the first call
+        var second = getXPlusFive(8);
+
+        // add the two numbers
+        var total = first + second;
+        console.log(total);
+    }
+
+    // call the printTotal() function
+    // this will trigger the calling of the other two functions
+    printTotal();
+
+</script>
+
+</body>
+</html>
