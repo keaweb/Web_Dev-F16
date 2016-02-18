@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <style type="text/css">
+        .drone {
+            position: absolute;
+            color: green;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<i class='fa fa-cog fa-spin fa-5x drone'></i>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    var counter = 0;
+    setInterval(function () {
+        switch (counter) {
+            case 5:
+                $(".drone").css({"color": "yellow"});
+                break;
+
+            case 10:
+                $(".drone").css({"color": "red"});
+                break;
+
+            case 15:
+                $(".drone").css({"color": "black"});
+                $(".drone").removeClass("fa-spin");
+                break;
+        }
+        counter++;
+        console.log(counter);
+    }, 500);
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
