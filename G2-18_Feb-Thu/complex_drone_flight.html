@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feb 18 - Drone/accident</title>
+
+    <style type="text/css">
+        .drone {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            border: 2px solid black;
+            border-radius: 50%;
+            position: absolute;
+            font-size: 70px;
+            z-index: 1;
+        }
+
+        .accident {
+            position: absolute;
+            font-size: 80px;
+            color: red;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div id="drone1" class="drone" data-batterylife="10" style="top: 20px"></div>
+<div id="drone2" class="drone" data-batterylife="10" style="left: 20px"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+
+    var windowW = $(window).width();
+    var windowH = $(window).height();
+    var activeDrone = 1;
+
+    setInterval(function () {
+        createAccident();
+    }, 1000);
+
+    setInterval(function () {
+        var currentDrone = $("#drone" + activeDrone);
+
+        if (currentDrone.attr("data-batterylife") == 5) {
+            currentDrone.css("background-color", "yellow");
+        } else if (currentDrone.attr("data-batterylife") <= 2) {
+            currentDrone.css("background-color", "red");
+            console.log("Drone " + activeDrone + " going home!")
+            currentDrone.clearQueue();
+            returnHome(currentDrone);
+            switchDrones();
+        }
+    }, 100);
+
+
+    function flyToAccident() {
+        $("#drone" + activeDrone).animate({
+            top: $(".accident:eq(0)").position().top - 21,
+            left: $(".accident:eq(0)").position().left - 21,
+            // left: destX-21,
+            // top: destY-21,
+        }, 500, function () {
+
+            var currentBattery = $("#drone" + activeDrone).attr("data-batterylife");
+            $("#drone" + activeDrone).attr("data-batterylife", currentBattery - 1);
+            growDrone();
+            $(".accident:eq(0)").remove();
+        });
+    }
+
+    function growDrone() {
+        var currentDrone = $("#drone" + activeDrone);
+        currentDrone.animate({height: '+=5px', width: '+=5px'}, 1000);
+        // currentDrone.animate({width: '+=5px'}, 1000);
+    }
+
+    function returnHome(exhaustedDrone) {
+        exhaustedDrone.animate({
+            left: 20,
+            top: 20,
+        }, 2000, function () {
+            setTimeout(function () {
+                exhaustedDrone.attr("data-batterylife", "10");
+                exhaustedDrone.css("background-color", "green");
+            }, 1000);
+        });
+    }
+
+    function createAccident() {
+        var accidentX = getRandomX();
+        var accidentY = getRandomY();
+
+        var accidentIcon = "<i class='fa fa-user accident' style='left: " + accidentX + "px; top: " + accidentY + "px;'>";
+        $("body").append(accidentIcon);
+        console.log("ACCIDENT AT " + accidentX + ", " + accidentY + "! DEPLOYING DRONE!");
+        flyToAccident();
+    }
+
+    function switchDrones() {
+        if (activeDrone == 1) {
+            activeDrone = 2;
+        } else {
+            activeDrone = 1;
+        }
+    }
+
+    function getRandomX() {
+        var randomW = Math.round(Math.random() * (windowW - 100));
+        return randomW;
+    }
+
+    function getRandomY() {
+        var randomH = Math.round(Math.random() * (windowH - 100) + 50);
+        return randomH;
+    }
+
+</script>
+</body>
+</html>

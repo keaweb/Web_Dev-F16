@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Drone & accidents test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        .drone {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .greenColor {
+            color: green;
+        }
+
+        .yelloewColor {
+            color: yellow;
+        }
+
+        .redColor {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+<i class="fa fa-gear fa-spin fa-5x drone greenColor" id="myDrone" data-batterLife="100"></i>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+
+    var randomWidth = 0;
+    var randomHeight = 0;
+    var counter = 0;
+    var test;
+
+    function moveDrone(targetWidth, targetHeight) {
+
+        $("#myDrone").animate(
+                {
+                    left: targetWidth,
+                    top: targetHeight
+                }, 5000, function () {
+                    console.log("DRONE ARRIVED");
+                    $(".accident").remove();
+                });
+    }
+
+    function createAccident() {
+        var width = $(window).width();
+        var height = $(window).height();
+
+        randomWidth = Math.round(Math.random() * width);
+        randomHeight = Math.round(Math.random() * height);
+
+        $("body").append('<div class="accident" style="position: absolute; background-color: black; border-radius: 50%; height: 30px; width:30px; top: ' + randomHeight + 'px; left: ' + randomWidth + 'px"></div>');
+    }
+
+    setInterval(function () {
+        if (counter == 10) {
+            createAccident();
+            moveDrone(randomWidth, randomHeight);
+            counter = 0;
+        }
+        else {
+            counter++;
+        }
+    }, 1000);
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
