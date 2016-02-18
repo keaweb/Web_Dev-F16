@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .drone {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            float: left;
+            margin: auto;
+            background-color: white;
+            border: solid 1px black;
+            border-radius: 50%;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div id="btnStop">STOP ME PLEASE</div>
+<div class="drone" id="drone0"></div>
+<div class="drone" id="drone1"></div>
+<div class="drone" id="drone2"></div>
+<div class="drone" id="drone3"></div>
+<div class="drone" id="drone4"></div>
+<div class="drone" id="drone5"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+
+    $("#btnStop").click(function () {
+        clearInterval(myTimer);
+    });
+
+    // setInterval
+    var myTimer = setInterval(function () {
+        console.log(myTimer);
+        var randomA = Math.round(Math.random() * 255);
+        var randomB = Math.round(Math.random() * 255);
+        var randomC = Math.round(Math.random() * 255);
+
+        $("body").css({"background-color": "rgb(" + randomA + "," + randomB + "," + randomC + ")"});
+
+        for (var i = 0; i <= 5; i++) {
+
+            var randomA = Math.round(Math.random() * 255);
+            var randomB = Math.round(Math.random() * 255);
+            var randomC = Math.round(Math.random() * 255);
+
+            var randomBorder = Math.round(Math.random() * 155);
+
+            $("#drone" + i).css({"background-color": "rgb(" + randomA + "," + randomB + "," + randomC + ")"});
+            $("#drone" + i).css({"border": "solid " + randomBorder + "px black"});
+            $("#drone" + i).css({"border": "dashed " + randomBorder + "px black"});
+            $("#drone" + i).css({"border": "dotted " + randomBorder + "px black"});
+            $("#drone" + i).css({"border-radius": randomBorder + "px"});
+        }
+    }, 500)
+
+</script>
+
+</body>
+
+</html>
