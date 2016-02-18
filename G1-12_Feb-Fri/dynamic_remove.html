@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer and Icons Exercise</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/
+font-awesome.min.css">
+
+</head>
+<body>
+
+<div id="superDiv">
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+    // already built elements
+    // $(".btnTest").click(function(){
+    // 	console.log("X");
+    // });
+
+    // applied to all elements, even dynamic ones
+    // this is very good to know
+    // $(document).on("click", ".btnTest", function(){
+    // 	console.log("X");
+    // });
+
+    // $("#superDiv").append('<div class="btnTest">Click me</div>');
+
+    // Build 10 elements dynamic (home)
+    // Build 10 other elements dynamic (facebook)
+
+    // when I click on any home I see "home" in the cons
+    // when I click on any facebook I see "facebook" in the cons
+
+    // $(document).on("click", ".fa-home", function(){
+    // 	console.log("element clicked");
+    // });
+
+    // $(document).on("click", ".fa-facebook", function(){
+    // 	console.log("facebook");
+    // });
+
+    // for(var i = 0; i <= 9; i++){
+    // 	console.log(i);
+    // 	$("#superDiv").append('<div class="one"><i class="fa fa-home"></i></div>');
+    // 	$("#superDiv").append('<div class="one"><i class="fa fa-facebook"></i></div>');
+    // }
+
+
+    for (var i = 0; i <= 4; i++) {
+        console.log(i);
+        $("#superDiv").append('<div class="one"><i class="fa fa-home"></i></div>');
+        $("#superDiv").append('<div class="one"><i class="fa fa-facebook"></i></div>');
+    }
+
+    $(document).on("click", ".fa", function () {
+        $(this).remove();
+    });
+
+
+</script>
+
+
+</body>
+</html>
