@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Functions</title>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+    // only show Test ME HI three times
+
+    var counter = 0;
+
+    function testMe(){
+        console.log("Test ME");
+        sayHi();
+    }
+
+    function sayHi(){
+        console.log("HI");
+        counter++;
+        if (counter<3){
+            testMe();
+        }
+    }
+
+    testMe();
+
+</script>
+
+
+</body>
+</html>
