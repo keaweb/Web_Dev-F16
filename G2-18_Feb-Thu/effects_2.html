@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <style>
+        .drone {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            position: absolute;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="drone"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+<script>
+
+    $(".drone").animate({
+        left: 100,
+        top: 100
+    }, 5000, function () {
+        console.log("DRONE ARRIVED");
+
+        var positionXDrone = $(".drone").position().left;
+        console.log("positionXDrone: " + positionXDrone);
+
+        var positionYDrone = $(".drone").position().top;
+        console.log("positionYDrone: " + positionYDrone);
+    });
+
+
+</script>
+
+</body>
+</html>
