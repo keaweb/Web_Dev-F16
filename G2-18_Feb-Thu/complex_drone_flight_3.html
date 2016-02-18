@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WebDev - 18. feb. 2016 - 3 functions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .drone {
+            position: absolute;
+            color: green;
+        }
+
+        .accident {
+            background-color: red;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+        }
+
+        #accidentCounter {
+            position: absolute;
+            z-index: 1000;
+            left: 50%;
+            height: 50px;
+            background-color: #eaeaea;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<h2 id="accidentCounter"></h2>
+
+<div id="drone1" class="drone fa fa-cog fa-spin fa-4x" data-battery="30"></div>
+<div id="drone2" class="drone fa fa-cog fa-spin fa-5x" data-battery="30"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+
+    //  global variables
+    var accidentsTotal = 0;
+
+    var activeDrone = "drone1";
+
+    var accidentXLocation = 0;
+    var accidentYLocation = 0;
+
+    var accidentHappend = false;
+
+    var flying = false;
+
+    var currentAccident = "";
+
+    var currentBatteryLevel = 0;
+
+
+    // main timer
+    var timer1 = setInterval(function () {
+        console.log(activeDrone);
+
+        // get the current active drone batterylevel and deduct 1
+        currentBatteryLevel = $("#" + activeDrone).attr("data-battery");
+        $("#" + activeDrone).attr("data-battery", currentBatteryLevel - 1);
+
+        // swap colors on the drones based on battery level
+        switch (currentBatteryLevel) {
+            case "20":
+                $("#" + activeDrone).css({"color": "yellow"});
+                break;
+
+            case "4":
+                $("#" + activeDrone).css({"color": "red"});
+                break;
+        }
+
+        checkDroneReturnHome();
+
+        // create a new accident
+        if (flying == false) {
+            createNewAccident();
+        }
+
+        if (accidentHappend == true && flying != true) {
+            animateDroneMovement();
+        }
+
+    }, 100);
+
+    // generate random X,Y location on the screen
+    function getRandomLocation() {
+        var screenWidth = $(document).width();
+        var screenHeight = $(document).height();
+        var randomWidth = Math.round(Math.random() * screenWidth - 20);
+        var randomHeight = Math.round(Math.random() * screenHeight - 20);
+        return {"x": randomWidth, "y": randomHeight};
+    }
+
+    // create a new accident
+    function createNewAccident() {
+        //console.log("accident counter");
+        var randomLocation = getRandomLocation();
+
+        accidentXLocation = randomLocation.x;
+        accidentYLocation = randomLocation.y;
+
+        accidentHappend = true;
+
+        var accident = $('<div class="accident" style="left: ' + randomLocation.x + 'px; top: ' + randomLocation.y + 'px;"></div>');
+
+        currentAccident = accident;
+
+        accidentsTotal++;
+
+        $("#accidentCounter").text("Total amount of accidents: " + accidentsTotal);
+
+        $("body").append(accident);
+    }
+
+    // check if a drone needs to return home
+    function checkDroneReturnHome() {
+        // drone 1 is returning home
+        if (currentBatteryLevel == 4 && activeDrone == "drone1") {
+            $("#" + activeDrone).animate({left: 0, top: 0}, 2000, function () {
+                $("#drone1").css({"color": "green"});
+                $("#" + activeDrone).attr("data-battery", 30);
+            });
+            activeDrone = "drone2";
+        }
+        // drone 2 is returning home
+        else if (currentBatteryLevel == 4 && activeDrone == "drone2") {
+            $("#" + activeDrone).animate({left: 0, top: 0}, 2000, function () {
+                $("#drone2").css({"color": "green"});
+                $("#" + activeDrone).attr("data-battery", 30);
+            });
+            activeDrone = "drone1";
+        }
+    }
+
+
+    // make the drone fly around the screen
+    function animateDroneMovement() {
+        flying = true;
+
+        $("#" + activeDrone).animate({
+            left: accidentXLocation,
+            top: accidentYLocation
+        }, 1000, function () {
+            //console.log(accidentHappend + " This is the callback");
+            accidentHappend = false;
+            flying = false;
+            currentAccident.toggle("explode", {pieces: 100});
+        });
+    }
+
+</script>
+</body>
+</html>
